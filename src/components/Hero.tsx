@@ -35,7 +35,7 @@ export default function Hero({ ready = false }: HeroProps) {
           <p
             className={`${anim} hero-stagger-3 mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg lg:mx-0`}
           >
-            MT & Associates delivers expert accounting, tax, audit, and IT solutions — helping
+            MT & Associates delivers expert accounting, tax, and IT solutions — helping
             businesses stay compliant, efficient, and ahead of the curve.
           </p>
           <div
