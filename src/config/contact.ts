@@ -4,8 +4,8 @@
  */
 export const contactConfig = {
   email: "contactmtassociates@gmail.com",
-  phone: "+91 74985 55935",
-  phoneDial: "+917498555935/ +919823124595",
+  phone: "+91 74985 55935/ +91 98231 24595",
+  phoneDial: "+917498555935",
   whatsapp: "917498555935",
   businessHours: "Mon – Sat: 9:00 AM – 6:00 PM",
   address: "Mumbai, Maharashtra, India",
