@@ -8,6 +8,7 @@ export const contactConfig = {
   phoneDial: "+917498555935",
   whatsapp: "917498555935",
   businessHours: "Mon – Sat: 9:00 AM – 6:00 PM",
+  address: "Mumbai, Maharashtra, India",
 } as const
 
 export function getWhatsAppUrl(message?: string) {
