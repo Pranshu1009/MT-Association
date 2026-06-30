@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-slate-800 bg-slate-50;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-[0.9375rem] text-white outline-none transition-colors sm:text-base;
+  }
+
+  .input-field::placeholder {
+    @apply text-slate-400;
+  }
+
+  .input-field:focus {
+    @apply border-gold-500 ring-2 ring-gold-500/20;
+  }
+
+  .input-field option {
+    @apply bg-navy-900 text-white;
+  }
+
+  /* ── Loader ── */
+  .loader-enter {
+    animation: loaderFadeIn 1s ease-out forwards;
+  }
+
+  .loader-exit {
+    animation: loaderFadeOut 0.7s ease-in forwards;
+  }
+
+  .loader-logo {
+    animation: loaderPulse 2s ease-in-out infinite;
+  }
+
+  .loader-grain {
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Cinematic film grain (hero) ── */
+  .cinematic-grain {
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grainShift 8s steps(10) infinite;
+  }
+
+  /* ── Scroll reveal ── */
+  .reveal {
+    opacity: 0;
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-up {
+    transform: translateY(40px);
+  }
+
+  .reveal-left {
+    transform: translateX(-40px);
+  }
+
+  .reveal-right {
+    transform: translateX(40px);
+  }
+
+  .reveal-fade {
+    transform: none;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* ── Hero entrance (after loader) ── */
+  .hero-enter {
+    animation: heroReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+  }
+
+  .hero-stagger-1 { animation-delay: 0.1s; }
+  .hero-stagger-2 { animation-delay: 0.25s; }
+  .hero-stagger-3 { animation-delay: 0.4s; }
+  .hero-stagger-4 { animation-delay: 0.55s; }
+  .hero-stagger-5 { animation-delay: 0.7s; }
+
+  .nav-enter {
+    animation: navSlideDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+  }
+
+  .stat-card-hover {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .stat-card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(201, 162, 39, 0.12);
+    border-color: rgba(201, 162, 39, 0.3);
+  }
+}
+
+@layer utilities {
+  @keyframes loaderFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes loaderFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  @keyframes loaderPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 0 30px 4px rgba(201, 162, 39, 0.15); }
+  }
+
+  @keyframes grainShift {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -2%); }
+    30% { transform: translate(1%, -1%); }
+    50% { transform: translate(-1%, 2%); }
+    70% { transform: translate(2%, 1%); }
+    90% { transform: translate(-2%, 1%); }
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(30px); filter: blur(6px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  @keyframes navSlideDown {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
